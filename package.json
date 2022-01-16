@@ -1,6 +1,6 @@
 {
   "name": "pageweaver",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A command line application for creating multi-page and multi-technology websites.",
   "main": "bin/pageweaver",
   "dependencies": {
@@ -10,10 +10,10 @@
   "devDependencies": {},
   "scripts": {
     "test": "node lib/test.js",
-    "create-page": "node bin/pageweaver.js create-page",
-    "delete-page": "node bin/pageweaver.js delete-page",
-    "nuke-project": "node bin/pageweaver.js nuke-project",
-    "condense-css": "node bin/pageweaver.js condense-css",
+    "create-page": "node bin/pageweaver create-page",
+    "delete-page": "node bin/pageweaver delete-page",
+    "nuke-project": "node bin/pageweaver nuke-project",
+    "condense-css": "node bin/pageweaver condense-css",
     "build": "node lib/bin/build.js"
   },
   "repository": {
