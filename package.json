@@ -1,0 +1,32 @@
+{
+  "name": "pageweaver",
+  "version": "0.0.0",
+  "description": "A command line application for creating multi-page and multi-technology websites.",
+  "main": "index.js",
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "colors": "^1.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node lib/test.js",
+    "create-page": "node lib/bin/page.js create-page",
+    "delete-page": "node lib/bin/page.js delete-page",
+    "nuke-project": "node lib/bin/page.js nuke-project",
+    "condense-css": "node lib/bin/page.js condense-css",
+    "build": "node lib/bin/build.js"
+  },
+  "repository": {
+    "type": "git"
+  },
+  "bin": {
+    "pageweaver": "index.js"
+  },
+  "keywords": [
+    "multi-page",
+    "web",
+    "web-dev"
+  ],
+  "author": "Adebola Akomolafe",
+  "license": "ISC"
+}
