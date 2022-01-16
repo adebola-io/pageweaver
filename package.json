@@ -2,7 +2,7 @@
   "name": "pageweaver",
   "version": "0.0.0",
   "description": "A command line application for creating multi-page and multi-technology websites.",
-  "main": "index.js",
+  "main": "bin/pageweaver",
   "dependencies": {
     "child_process": "^1.0.2",
     "colors": "^1.4.0"
@@ -10,10 +10,10 @@
   "devDependencies": {},
   "scripts": {
     "test": "node lib/test.js",
-    "create-page": "node lib/bin/page.js create-page",
-    "delete-page": "node lib/bin/page.js delete-page",
-    "nuke-project": "node lib/bin/page.js nuke-project",
-    "condense-css": "node lib/bin/page.js condense-css",
+    "create-page": "node bin/pageweaver.js create-page",
+    "delete-page": "node bin/pageweaver.js delete-page",
+    "nuke-project": "node bin/pageweaver.js nuke-project",
+    "condense-css": "node bin/pageweaver.js condense-css",
     "build": "node lib/bin/build.js"
   },
   "repository": {
@@ -21,7 +21,7 @@
     "url": "http://github.com/adebola-xyz/pageweaver"
   },
   "bin": {
-    "pageweaver": "index.js"
+    "pageweaver": "bin/pageweaver"
   },
   "keywords": [
     "multi-page",
