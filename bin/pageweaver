@@ -11,138 +11,17 @@ const createWebPage = require("../lib/scripts/createWebPage");
 const { deleteWebPage } = require("../lib/scripts/deleteWebPage");
 const linespace = require("../lib/utils/linespace");
 const { deleteAllWebPages } = require("../lib/scripts/nukeProject");
-const regularize = require("../lib/utils/regularize");
 const { updatePageCount } = require("../lib/scripts/updatePageCount");
 const condenseCSS = require("../lib/scripts/condensecss");
+const buildPage = require("../lib/scripts/buildPage");
+const resolveDeleteArgs = require("../lib/scripts/resolveDeleteArgs");
+const resolveCreateArgs = require("../lib/scripts/resolveCreateArgs");
+const resolvePageName = require("../lib/scripts/resolvePageName");
+const terminal = require("../lib/utils/terminal");
 
-/**
- * Resolves the argument array from the node process into a useful object.
- * @param {Process Array} node_process_argv
- * @returns Object of parameters for page creation.
- */
-const resolveCreateArgs = (node_process_argv = []) => {
-  return new Promise((resolve, reject) => {
-    const error = false;
-    let args = {};
-    // All possible arguments.
-    [
-      "--no-default-html",
-      "--no-css",
-      "--no-javascript",
-      "--bootstrap",
-      "--jquery",
-      "--vue",
-      "--react",
-      "--animations",
-      "--animated",
-      "--animation",
-      "--angular",
-      "--react-cli",
-      "--react-router",
-      "--vue-cli",
-      "--vue-router",
-      "--angular-cli",
-      "--php",
-      "--responsive",
-    ].forEach((argument) => {
-      if (
-        node_process_argv.find((inputArgs) => {
-          return inputArgs === argument;
-        }) === argument
-      ) {
-        args[regularize(argument).slice(2)] = true;
-      }
-    });
-    if (
-      process.argv.find((arg) => {
-        return arg.slice(0, 5) === "--in:";
-      }) !== undefined
-    ) {
-      args.diffDir = true;
-      args.pageDestination = process.argv
-        .find((arg) => {
-          return arg.slice(0, 5) === "--in:";
-        })
-        .slice(5);
-    }
-    if (args.react_cli || args.vue_cli || args.angular_cli) {
-      args.framework = true;
-    }
-    // Resolve react-router discrepancy
-    if (args.react_router && !args.react_cli) {
-      console.warn(
-        " WARNING ".bgYellow.black +
-          ": " +
-          "Your page has conflicting or incomplete Arguments.".brightYellow
-      );
-      linespace();
-      console.log("You cannot use the React router outside of a React app.");
-      linespace();
-      console.log(
-        "To use the React router, delete the page, then recreate it while adding the --react-cli argument."
-          .brightYellow
-      );
-      linespace();
-      delete args.react_router;
-    }
-    // Resolve vue router discrepancy.
-    if (args.vue_router && !args.vue_cli) {
-      console.warn(
-        " WARNING ".bgYellow.black +
-          ": " +
-          "Your page has conflicting or incomplete Arguments.".brightYellow
-      );
-      linespace();
-      console.log("You cannot use the Vue router outside of a Vue CLI app.");
-      linespace();
-      console.log(
-        "To use the Vue router, delete the page, then recreate it while adding the --vue-cli argument."
-          .brightYellow
-      );
-      linespace();
-      delete args.vue_router;
-    }
-    if (args.animation || args.animations || args.animated) {
-      args.animations = true;
-    }
-    !error ? resolve(args) : reject();
-    return args;
-  });
-};
-
-/**
- * Error checks the page name.
- * @param {String} name
- * @returns
- */
-const resolvePageName = (name) => {
-  if (name === undefined || name === " " || name.slice(0, 2) === "--") {
-    return undefined;
-  } else return name;
-};
-
-/**
- * Resolves the process argument variables array into a useful object of arguments for page deletion.
- * @param {Process Array} node_process_argv
- * @returns Object of arguments for page deletion.
- */
-const resolveDelArgs = (node_process_argv) => {
-  return new Promise((resolve, reject) => {
-    let args = {};
-    const error = false;
-    let source = process.argv.find((arg) => {
-      return arg.slice(0, 7) === "--from:";
-    });
-    if (source !== undefined) {
-      args.sourceFolder = source.slice(7);
-    } else args.sourceFolder = "./pageweaver.pages";
-    !error ? resolve(args) : reject();
-  });
-};
-
+var pageName = resolvePageName(process.argv[3]);
 switch (process.argv[2]) {
   case "create-page":
-    let pageName = resolvePageName(process.argv[3]);
     resolveCreateArgs(process.argv.slice(3)).then((args) => {
       createWebPage(
         pageName,
@@ -156,47 +35,47 @@ switch (process.argv[2]) {
             linespace();
             break;
           case "already-exists":
-            console.log(
-              "Error: Could not create page. A page folder with the same name already exists."
-                .grey
+            terminal.error(
+              `Existing page in folder.`,
+              `${pageName} page already exists in the specified folder. To overwrite, use --overwrite.`
             );
             linespace();
             break;
           case "undefined-name":
-            console.error(
-              ` ERROR `.bgRed.black +
-                `: Undefined or Invalid Web page name.`.brightRed
-            );
-            linespace();
-            console.error(
+            terminal.error(
+              "Undefined or Invalid Web page name.",
               `The command structure is pageweaver create-page [page-name] -- [--arg1] [--arg2].`
-                .brightRed
             );
-            linespace();
             break;
           case "duplicate":
             updatePageCount(process.argv[3], "append", args);
-            console.log(
-              " WARNING ".bgYellow.black +
-                ": " +
-                `There is also a web page with the name ${pageName} in another folder.`
-                  .yellow
+            terminal.warn(
+              `Duplicate Web Page Folders with the name '${pageName}'`
             );
-            linespace();
             break;
         }
       });
     });
     break;
   case "delete-page":
-    resolveDelArgs(process.argv[2]).then((args) => {
-      deleteWebPage(process.argv[3], args.sourceFolder).then((stat) => {
-        if ((stat = "success")) {
-          updatePageCount(
-            process.argv[3],
-            "remove",
-            resolveCreateArgs(process.argv.slice(3))
-          );
+    resolveDeleteArgs(process.argv[2]).then((args) => {
+      deleteWebPage(pageName, args.sourceFolder).then((stat) => {
+        switch (stat) {
+          case "success":
+            terminal.success(`${pageName} deleted successfully.`);
+            updatePageCount(process.argv[3], "remove", args);
+            break;
+          case "non-existent":
+            terminal.error(
+              `Non-Existent Page.`,
+              "Pageweaver could not find the page you're trying to delete. Check carefully and try again. "
+            );
+            break;
+          case "undefined-filename":
+            terminal.error(
+              "Undefined or invalid page name.",
+              `The filename you specified is invalid. Please enter a correct filename and try again.`
+            );
         }
       });
     });
@@ -206,6 +85,8 @@ switch (process.argv[2]) {
     break;
   case "condense-css":
     condenseCSS(process.argv[3]);
+    break;
+  case "build-page":
     break;
   case undefined:
     console.log(
@@ -232,7 +113,7 @@ Usage: pageweaver <command> [--arguments]
     --react                    Generates page with React CDN link.
     --react-cli                Generates React CLI App.
     --redux                    Adds Redux to React App.
-    --react_router             Add router to React App.
+    --react-router             Add router to React App.
     --in:<PATH>                Path to where pages should be generated in. 
                                Defaults to the 'pageweaver.pages' folder.
 
