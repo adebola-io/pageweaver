@@ -1,10 +1,7 @@
 #!/usr/bin/env node
 /*
- * This nodejs file handles web page functions.
+ * This file handles ALL web page functions.
  * DO NOT DELETE.
- * The script commands are:
- *  To create a new web page = 'npm run create-page 'page-name' [arguments]'
- *  To delete a web page = 'npm run delete-page [page-name]'
  */
 
 const createWebPage = require("../lib/scripts/createWebPage");
@@ -26,7 +23,7 @@ switch (process.argv[2]) {
       createWebPage(
         pageName,
         args,
-        `${args.diffDir ? args.pageDestination : "./pageweaver.pages"}`
+        `${args.diffDir ? args.pageDestination : "pageweaver.pages"}`
       ).then((stat) => {
         switch (stat) {
           case "success":
