@@ -15,6 +15,8 @@ const resolveDeleteArgs = require("../lib/scripts/resolveDeleteArgs");
 const resolveCreateArgs = require("../lib/scripts/resolveCreateArgs");
 const resolvePageName = require("../lib/scripts/resolvePageName");
 const terminal = require("../lib/utils/terminal");
+const installDependencies = require("../lib/scripts/installDependencies");
+const overwritePage = require("../lib/scripts/overwritePage");
 
 var pageName = resolvePageName(process.argv[3]);
 switch (process.argv[2]) {
@@ -30,6 +32,13 @@ switch (process.argv[2]) {
             updatePageCount(process.argv[3], "append", args);
             console.log(`${pageName} was created succesfully.`.green);
             linespace();
+            if (args.framework) {
+              installDependencies(
+                pageName,
+                args,
+                `${args.diffDir ? args.pageDestination : "pageweaver.pages"}`
+              );
+            }
             break;
           case "already-exists":
             terminal.error(
@@ -37,6 +46,13 @@ switch (process.argv[2]) {
               `${pageName} page already exists in the specified folder. To overwrite, use --overwrite.`
             );
             linespace();
+            break;
+          case "to-overwrite":
+            overwritePage(
+              pageName,
+              `${args.diffDir ? args.pageDestination : "pageweaver.pages"}`,
+              args
+            );
             break;
           case "undefined-name":
             terminal.error(
@@ -83,8 +99,6 @@ switch (process.argv[2]) {
   case "condense-css":
     condenseCSS(process.argv[3]);
     break;
-  case "build-page":
-    break;
   case undefined:
     console.log(
       `
@@ -123,4 +137,7 @@ Usage: pageweaver <command> [--arguments]
     break;
   case "test":
     require("../lib/test.js");
+    break;
+  default:
+    terminal.error("Unrecognized command.", undefined, true);
 }

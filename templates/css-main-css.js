@@ -4,5 +4,6 @@ module.exports = `\`/*
 * The imports into this file have been arranged in such a way that prevents unecessary overriding. For more on the structure, see http://pageweaver.com/css.*/
 
 /* By default, all main styling content should be kept in the .content.css stylesheet.*/
-@import url(./\${mainParam}.content.css)
+@import url(./\${mainParam}.content.css);
+
 \``;
