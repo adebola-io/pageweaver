@@ -54,9 +54,11 @@ module.exports = `\`<!DOCTYPE html>
       To begin the development, run 'npm start' or 'yarn start'.
       To create a production bundle, use 'npm run build' or 'yarn build'.
     -->\`
-              : \`<-- Enter your HTML here. -->\`
+              : \`\`
           }\`
-        : \`\`
+        : \`<div>
+      <p> New Pageweaver Page.</p>
+    </div>\`
     }
     \${
       args.no_javascript || args.framework
