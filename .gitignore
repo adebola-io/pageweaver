@@ -1,7 +1,9 @@
+/node_bundles
+*/node_bundles
 /node_modules
 */node_modules
-pageweaver.pages
 pages.config.json
 hdlogo.png
 .npmignore
 logos & icons
+pageweaver.pages/test.page/node_modules

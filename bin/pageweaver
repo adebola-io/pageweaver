@@ -33,11 +33,13 @@ switch (process.argv[2]) {
             console.log(`${pageName} was created succesfully.`.green);
             linespace();
             if (args.framework) {
-              installDependencies(
-                pageName,
-                args,
-                `${args.diffDir ? args.pageDestination : "pageweaver.pages"}`
-              );
+              setTimeout(() => {
+                installDependencies(
+                  pageName,
+                  args,
+                  `${args.diffDir ? args.pageDestination : "pageweaver.pages"}`
+                );
+              }, 500);
             }
             break;
           case "already-exists":
@@ -45,7 +47,6 @@ switch (process.argv[2]) {
               `Existing page in folder.`,
               `${pageName} page already exists in the specified folder. To overwrite, use --overwrite.`
             );
-            linespace();
             break;
           case "to-overwrite":
             overwritePage(
