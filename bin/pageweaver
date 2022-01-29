@@ -20,7 +20,7 @@ const overwritePage = require("../lib/scripts/overwritePage");
 
 var pageName = resolvePageName(process.argv[3]);
 switch (process.argv[2]) {
-  case "create-page":
+  case "create-app":
     resolveCreateArgs(process.argv.slice(3)).then((args) => {
       createWebPage(
         pageName,
@@ -45,7 +45,7 @@ switch (process.argv[2]) {
           case "already-exists":
             terminal.error(
               `Existing page in folder.`,
-              `${pageName} page already exists in the specified folder. To overwrite, use --overwrite.`
+              `${pageName} already exists as an app in the specified folder. To overwrite, use --overwrite.`
             );
             break;
           case "to-overwrite":
@@ -57,21 +57,21 @@ switch (process.argv[2]) {
             break;
           case "undefined-name":
             terminal.error(
-              "Undefined or Invalid Web page name.",
+              "Undefined or Invalid app name.",
               `The command structure is pageweaver create-page [page-name] -- [--arg1] [--arg2].`
             );
             break;
           case "duplicate":
             updatePageCount(process.argv[3], "append", args);
             terminal.warn(
-              `Duplicate Web Page Folders with the name '${pageName}'`
+              `Duplicate apps with the name '${pageName}' in different folders.`
             );
             break;
         }
       });
     });
     break;
-  case "delete-page":
+  case "delete-app":
     resolveDeleteArgs(process.argv[2]).then((args) => {
       deleteWebPage(pageName, args.sourceFolder).then((stat) => {
         switch (stat) {
@@ -82,13 +82,13 @@ switch (process.argv[2]) {
           case "non-existent":
             terminal.error(
               `Non-Existent Page.`,
-              "Pageweaver could not find the page you're trying to delete. Check carefully and try again. "
+              "Pageweaver could not find the app you're trying to delete. Check carefully and try again. "
             );
             break;
           case "undefined-filename":
             terminal.error(
-              "Undefined or invalid page name.",
-              `The filename you specified is invalid. Please enter a correct filename and try again.`
+              "Undefined or invalid app name.",
+              `The app name you specified is invalid. Please enter a correct name and try again.`
             );
         }
       });
@@ -109,14 +109,14 @@ Usage: pageweaver <command> [--arguments]
 
 === COMMANDS ===================
 
-    <create-page>              Creates a new web page.
+    <create-app>              Creates a new web app.
     ==arguments=====
     --responsive               Generates css files for different screen widths.             
     --no-default-html          Does not write into generated HTML document.
-    --no-javascript            Does not generate javascript.
+    --no-javascript            Does not generate any javascript.
     --no-css                   Does not include CSS.
     --jquery                   Add Jquery CDN Link to website.
-    --php                      Gnerates PHP file in place of HTML.
+    --php                      Generates PHP file in place of HTML.
     --animation, --animated,   Generates animations.css file.
     --animations
     --vue                      Generates page with vue CDN link.
@@ -126,13 +126,13 @@ Usage: pageweaver <command> [--arguments]
     --react-cli                Generates React CLI App.
     --redux                    Adds Redux to React App.
     --react-router             Add router to React App.
-    --in:<PATH>                Path to where pages should be generated in. 
+    --in:<PATH>                Path to where apps should be generated in. 
                                Defaults to the 'pageweaver.pages' folder.
 
-    <delete-page>              Deletes existing web page.
+    <delete-app>              Deletes existing web app.
     --from:<PATH>
 
-    <nuke-project>             Deltes all web pages.
+    <nuke-project>             Deletes all web apps.
 `.green
     );
     break;
