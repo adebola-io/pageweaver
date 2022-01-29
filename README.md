@@ -1,12 +1,44 @@
 <img src='logo.png' align='center'></img>
-## Pageweaver
-- Current Version: 0.0.1
+<h1 align='center'>Pageweaver</h1>
+<p>
 
-Pageweaver is a node CLI application for generating and managing web sites and apps.
+<h6 align='center'>Current Version: 0.0.3</h6>
 
-### Installation
-To install pageweaver on your system, download the package from NPM and add to the system PATH variables using:
+Pageweaver is a node command line application for generating and managing web sites and apps.
 
+--------------
+
+## Installation
+To get started, 
+1. Download the latest version of Node for your system.
+2. Open up the terminal or command line interface:
+3. Type in the following command and press Enter:
+```
 npm install -g pageweaver
+```
+This will install pageweaver globally on your system, so that it can be used from any project. To install it locally use:
+```
+npm install pageweaver
+```
+-------------
 
-### Usage
+## Usage
+
+### Creation
+To create a new app, use:
+```
+pageweaver create-app app-name
+```
+#### Creation Arguments
+Command line arguments allow you to generate different app templates. e.g.
+```
+pageweaver create-page app-name --react-cli
+```
+The above command will generate a new react app, similar to what happens when you run create-react-app with npx. 
+Learn more about the different creation arguments [here](http://pageweaver).</p>
+
+The specified arguments and general info about a new pageweaver web page or web app are specified in the pages.config.json file,  which is stored in the root directory of the project. 
+
+*Manually editing or deleting the config file can lead to malfunctions in the workings of Pageweaver. It is not advisable that you do so.*
+
+### Deletion
