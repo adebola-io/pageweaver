@@ -7,7 +7,7 @@
 Pageweaver is a node command-line application for generating and managing web sites and apps.
 
 ### Contents
-- [Installation](##Installation)
+- [Installation](#Installation)
 - [Usage](#Usage)
 
 --------------
