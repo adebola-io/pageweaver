@@ -1,7 +1,8 @@
 {
   "name": "pageweaver",
+  "start":"12th January, 2022",
   "version": "0.0.3",
-  "description": "A command line application for creating multi-page and multi-technology websites.",
+  "description": "A command line application for creating web apps and sites.",
   "main": "bin/pageweaver",
   "dependencies": {
     "adm-zip": "^0.5.9",
@@ -11,8 +12,8 @@
   "devDependencies": {},
   "scripts": {
     "test": "node lib/test.js",
-    "create-page": "node bin/pageweaver create-page",
-    "delete-page": "node bin/pageweaver delete-page",
+    "create-app": "node bin/pageweaver create-app",
+    "delete-app": "node bin/pageweaver delete-app",
     "nuke-project": "node bin/pageweaver nuke-project",
     "condense-css": "node bin/pageweaver condense-css",
     "build": "node lib/bin/build.js"
@@ -25,7 +26,6 @@
     "pageweaver": "bin/pageweaver"
   },
   "keywords": [
-    "multi-page",
     "web",
     "web-dev"
   ],
