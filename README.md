@@ -1,10 +1,10 @@
-<img src='logo.png' align='center'></img>
+<img src='logo.png' align='center' height='45px'></img>
 <h1 align='center'>Pageweaver</h1>
 <p>
 
-<h6 align='center'>Current Version: 0.0.3</h6>
+<p align='center'>Current Version: 0.0.3</p>
 
-Pageweaver is a node command-line application for generating and managing web sites and apps.
+Pageweaver is a Node JS command-line application for generating and managing web sites and apps.
 
 ### Contents
 - [Installation](#Installation)
@@ -36,7 +36,7 @@ pageweaver create-app app-name
 #### Creation Arguments
 Command line arguments allow you to generate different app templates. e.g.
 ```console
-pageweaver create-page app-name --react-cli
+pageweaver create-app app-name --react-cli
 ```
 The above command will generate a new react app, similar to what happens when you run create-react-app with npx. 
 Learn more about the different creation arguments [here](http://pageweaver).</p>
@@ -46,3 +46,7 @@ Arguments and general info about a new web page or web app are stored in the pag
 **Manually editing or deleting the config file can lead to malfunctions in the workings of Pageweaver. It is not advisable that you do so.**
 
 ### Deletion
+To delete an existing page or app, run:
+```console
+pageweaver delete-app app-name
+```
