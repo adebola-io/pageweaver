@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 /*
- * This file handles ALL web page functions.
- * DO NOT DELETE.
+ * This file handles ALL app functions.
  */
 
 const createWebPage = require("../lib/scripts/createWebPage");
@@ -44,7 +43,7 @@ switch (process.argv[2]) {
             break;
           case "already-exists":
             terminal.error(
-              `Existing page in folder.`,
+              `Existing app in folder.`,
               `${pageName} already exists as an app in the specified folder. To overwrite, use --overwrite.`
             );
             break;
@@ -81,7 +80,7 @@ switch (process.argv[2]) {
             break;
           case "non-existent":
             terminal.error(
-              `Non-Existent Page.`,
+              `Non-Existent App.`,
               "Pageweaver could not find the app you're trying to delete. Check carefully and try again. "
             );
             break;
