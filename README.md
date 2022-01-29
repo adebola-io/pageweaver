@@ -43,6 +43,6 @@ Learn more about the different creation arguments [here](http://pageweaver).</p>
 
 Arguments and general info about a new web page or web app are stored in the pages.config.json file, which is located in the root directory of your project. 
 
-###### Manually editing or deleting the config file can lead to malfunctions in the workings of Pageweaver. It is not advisable that you do so.
+**Manually editing or deleting the config file can lead to malfunctions in the workings of Pageweaver. It is not advisable that you do so.**
 
 ### Deletion
