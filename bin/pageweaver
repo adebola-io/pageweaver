@@ -3,8 +3,8 @@
  * This file handles ALL app functions.
  */
 
-const createWebPage = require("../lib/scripts/createWebPage");
-const { deleteWebPage } = require("../lib/scripts/deleteWebPage");
+const createNewApp = require("../lib/scripts/createNewApp");
+const { deleteWebApp } = require("../lib/scripts/deleteWebApp");
 const linespace = require("../lib/utils/linespace");
 const { deleteAllWebPages } = require("../lib/scripts/nukeProject");
 const { updatePageCount } = require("../lib/scripts/updatePageCount");
@@ -12,31 +12,31 @@ const condenseCSS = require("../lib/scripts/condensecss");
 const buildPage = require("../lib/scripts/buildPage");
 const resolveDeleteArgs = require("../lib/scripts/resolveDeleteArgs");
 const resolveCreateArgs = require("../lib/scripts/resolveCreateArgs");
-const resolvePageName = require("../lib/scripts/resolvePageName");
+const resolveappName = require("../lib/scripts/resolveappName");
 const terminal = require("../lib/utils/terminal");
 const installDependencies = require("../lib/scripts/installDependencies");
 const overwritePage = require("../lib/scripts/overwritePage");
 
-var pageName = resolvePageName(process.argv[3]);
+var appName = resolveappName(process.argv[3]);
 switch (process.argv[2]) {
   case "create-app":
     resolveCreateArgs(process.argv.slice(3)).then((args) => {
-      createWebPage(
-        pageName,
+      createNewApp(
+        appName,
         args,
-        `${args.diffDir ? args.pageDestination : "pageweaver.pages"}`
+        `${args.diffDir ? args.appDestination : "pageweaver.apps"}`
       ).then((stat) => {
         switch (stat) {
           case "success":
             updatePageCount(process.argv[3], "append", args);
-            console.log(`${pageName} was created succesfully.`.green);
+            console.log(`${appName} was created succesfully.`.green);
             linespace();
             if (args.framework) {
               setTimeout(() => {
                 installDependencies(
-                  pageName,
+                  appName,
                   args,
-                  `${args.diffDir ? args.pageDestination : "pageweaver.pages"}`
+                  `${args.diffDir ? args.appDestination : "pageweaver.apps"}`
                 );
               }, 500);
             }
@@ -44,13 +44,13 @@ switch (process.argv[2]) {
           case "already-exists":
             terminal.error(
               `Existing app in folder.`,
-              `${pageName} already exists as an app in the specified folder. To overwrite, use --overwrite.`
+              `${appName} already exists as an app in the specified folder. To overwrite, use --overwrite.`
             );
             break;
           case "to-overwrite":
             overwritePage(
-              pageName,
-              `${args.diffDir ? args.pageDestination : "pageweaver.pages"}`,
+              appName,
+              `${args.diffDir ? args.appDestination : "pageweaver.apps"}`,
               args
             );
             break;
@@ -63,7 +63,7 @@ switch (process.argv[2]) {
           case "duplicate":
             updatePageCount(process.argv[3], "append", args);
             terminal.warn(
-              `Duplicate apps with the name '${pageName}' in different folders.`
+              `Duplicate apps with the name '${appName}' in different folders.`
             );
             break;
         }
@@ -72,10 +72,10 @@ switch (process.argv[2]) {
     break;
   case "delete-app":
     resolveDeleteArgs(process.argv[2]).then((args) => {
-      deleteWebPage(pageName, args.sourceFolder).then((stat) => {
+      deleteWebApp(appName, args.sourceFolder).then((stat) => {
         switch (stat) {
           case "success":
-            terminal.success(`${pageName} deleted successfully.`);
+            terminal.success(`${appName} deleted successfully.`);
             updatePageCount(process.argv[3], "remove", args);
             break;
           case "non-existent":
@@ -126,7 +126,7 @@ Usage: pageweaver <command> [--arguments]
     --redux                    Adds Redux to React App.
     --react-router             Add router to React App.
     --in:<PATH>                Path to where apps should be generated in. 
-                               Defaults to the 'pageweaver.pages' folder.
+                               Defaults to the 'pageweaver.apps' folder.
 
     <delete-app>              Deletes existing web app.
     --from:<PATH>
