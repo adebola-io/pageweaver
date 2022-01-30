@@ -3,7 +3,7 @@
  * This file handles ALL app functions.
  */
 
-const createNewApp = require("../lib/scripts/createNewApp");
+const createNewApp = require("../lib/scripts/create-app");
 const { deleteWebApp } = require("../lib/scripts/deleteWebApp");
 const linespace = require("../lib/utils/linespace");
 const { deleteAllWebPages } = require("../lib/scripts/nukeProject");
@@ -31,7 +31,7 @@ switch (process.argv[2]) {
             updatePageCount(process.argv[3], "append", args);
             console.log(`${appName} was created succesfully.`.green);
             linespace();
-            if (args.framework) {
+            if (args.includes_npm) {
               setTimeout(() => {
                 installDependencies(
                   appName,

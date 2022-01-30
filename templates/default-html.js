@@ -7,7 +7,9 @@ module.exports = `\`<!DOCTYPE html>
       args.no_css || args.framework
         ? ""
         : \`
-    <link rel="stylesheet" href="./\${mainParam}.styles/--\${mainParam}.css">\${
+    <link rel="stylesheet" href="./\${mainParam}.styles/\${
+      args.scss ? \`\` : \`--\`
+    }\${mainParam}.css"/>\${
             args.bootstrap && !args.bootstrap_local
               ? \`
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></link>\`

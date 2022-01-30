@@ -10,6 +10,11 @@ module.exports = `\`{
     "react-dom": "^17.0.2",\${
       args.react_router ? \`
     "react-router-dom" : "^5.2.0",\` : \`\`
+    }\${
+      args.scss
+        ? \`
+    "sass": "^1.43.3",\`
+        : \`\`
     }
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.2"
@@ -17,7 +22,12 @@ module.exports = `\`{
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test",\${
+      args.scss
+        ? \`
+    "watch-sass": "sass --watch ./src/styles/scss/\${mainParam}.app.scss:./src/styles/\${mainParam}.css",\`
+        : \`\`
+    }
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
