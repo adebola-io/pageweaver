@@ -39,24 +39,6 @@ This will install pageweaver globally on your system, so that it can be used fro
 
 For more on local installation, see [here](LOCAL_USE.md).
 
-## Installation
-
-To get started,
-
-1. Download the latest version of Node for your system.
-2. Open up the terminal or command line interface:
-3. Type in the following command and press Enter:
-
-```console
-npm install -g pageweaver
-```
-
-This will install pageweaver globally on your system, so that it can be used from any project. To install it locally use:
-
-```console
-npm install pageweaver
-```
-
 ---
 
 ## Usage
