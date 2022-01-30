@@ -24,7 +24,7 @@ switch (process.argv[2]) {
       createNewApp(
         appName,
         args,
-        `${args.diffDir ? args.appDestination : "pageweaver.apps"}`
+        `${args.diffDir ? args.appDestination : "."}`
       ).then((stat) => {
         switch (stat) {
           case "success":
@@ -36,7 +36,7 @@ switch (process.argv[2]) {
                 installDependencies(
                   appName,
                   args,
-                  `${args.diffDir ? args.appDestination : "pageweaver.apps"}`
+                  `${args.diffDir ? args.appDestination : "."}`
                 );
               }, 500);
             }
@@ -50,7 +50,7 @@ switch (process.argv[2]) {
           case "to-overwrite":
             overwritePage(
               appName,
-              `${args.diffDir ? args.appDestination : "pageweaver.apps"}`,
+              `${args.diffDir ? args.appDestination : "."}`,
               args
             );
             break;
@@ -93,7 +93,7 @@ switch (process.argv[2]) {
       });
     });
     break;
-  case "nuke-project":
+  case "nuke-folder":
     deleteAllWebPages();
     break;
   case "condense-css":
@@ -126,12 +126,12 @@ Usage: pageweaver <command> [--arguments]
     --redux                    Adds Redux to React App.
     --react-router             Add router to React App.
     --in:<PATH>                Path to where apps should be generated in. 
-                               Defaults to the 'pageweaver.apps' folder.
+                               Defaults to the '.' folder.
 
     <delete-app>              Deletes existing web app.
     --from:<PATH>
 
-    <nuke-project>             Deletes all web apps.
+    <nuke-folder>             Deletes all web apps.
 `.green
     );
     break;

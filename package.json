@@ -1,6 +1,6 @@
 {
   "name": "pageweaver",
-  "start":"12th January, 2022",
+  "start": "12th January, 2022",
   "version": "0.0.3",
   "description": "A command line application for creating web apps and sites.",
   "main": "bin/pageweaver",
@@ -14,7 +14,7 @@
     "test": "node lib/test.js",
     "create-app": "node bin/pageweaver create-app",
     "delete-app": "node bin/pageweaver delete-app",
-    "nuke-project": "node bin/pageweaver nuke-project",
+    "nuke-folder": "node bin/pageweaver nuke-folder",
     "condense-css": "node bin/pageweaver condense-css",
     "build": "node lib/bin/build.js"
   },
