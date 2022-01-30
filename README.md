@@ -115,10 +115,6 @@ To delete an existing project, run:
 pageweaver delete-app app-name
 ```
 
-### Deletion
-
-To delete an existing page or app, run:
-
 <p style='font-size:10pt'>Pageweaver-generated projects CANNOT be restored once they are deleted.</p>
 
 ### Complete Deletion
