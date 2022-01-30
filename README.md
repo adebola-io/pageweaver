@@ -1,4 +1,6 @@
-<img src='logo.png' align='center' height='45px'></img>
+<p align='center' width='100%'>
+ <img src='logo.png' height='100px'></img>
+</p>
 
  <h1 align='center'>Pageweaver</h1>
 
@@ -10,10 +12,10 @@
 
 - [Installation](#Installation)
 - [Usage](#Usage)
-  • [Creation](#Creation)
-  • [Development](#Development)
-  • [Production](#Production)
-  • [Deletion](#Deletion)
+  - [Creation](#Creation)
+  - [Development](#Development)
+  - [Production](#Production)
+  - [Deletion](#Deletion)
 
 ---
 
@@ -54,10 +56,6 @@ This will install pageweaver globally on your system, so that it can be used fro
 ```console
 npm install pageweaver
 ```
-
----
-
-=======
 
 ---
 
@@ -107,11 +105,6 @@ To build a developed web app, run:
 pageweaver build-app app-name
 ```
 
-The above command will generate a new react app, similar to what happens when you run create-react-app with npx.
-Learn more about the different creation arguments [here](http://pageweaver).</p>
-
-# Arguments and general info about a new web page or web app are stored in the pages.config.json file, which is located in the root directory of your project.
-
 Pageweaver will simply run the corresponding build command for the framework.
 
 ### Deletion
@@ -125,8 +118,6 @@ pageweaver delete-app app-name
 ### Deletion
 
 To delete an existing page or app, run:
-
-=======
 
 <p style='font-size:10pt'>Pageweaver-generated projects CANNOT be restored once they are deleted.</p>
 
