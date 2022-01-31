@@ -4,17 +4,16 @@
  */
 
 const createNewApp = require("../lib/scripts/create-app");
-const { deleteWebApp } = require("../lib/scripts/deleteWebApp");
+const { deleteWebApp } = require("../lib/scripts/delete-app");
 const linespace = require("../lib/utils/linespace");
-const { deleteAllWebPages } = require("../lib/scripts/nukeProject");
+const { deleteAllWebPages } = require("../lib/scripts/nuke-folder");
 const { updatePageCount } = require("../lib/scripts/updatePageCount");
 const condenseCSS = require("../lib/scripts/condensecss");
-const buildPage = require("../lib/scripts/buildPage");
-const resolveDeleteArgs = require("../lib/scripts/resolveDeleteArgs");
-const resolveCreateArgs = require("../lib/scripts/resolveCreateArgs");
+const resolveDeleteArgs = require("../lib/scripts/delete-app/resolveDeleteArgs");
+const resolveCreateArgs = require("../lib/scripts/create-app/resolveCreateArgs");
 const resolveappName = require("../lib/scripts/resolveappName");
 const terminal = require("../lib/utils/terminal");
-const installDependencies = require("../lib/scripts/installDependencies");
+const installDependencies = require("../lib/scripts/create-app/installDependencies");
 const overwritePage = require("../lib/scripts/overwritePage");
 
 var appName = resolveappName(process.argv[3]);
