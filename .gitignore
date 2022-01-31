@@ -2,7 +2,7 @@
 */node_bundles
 /node_modules
 */node_modules
-pages.config.json
+projects.config.json
 hdlogo.png
 .npmignore
 test

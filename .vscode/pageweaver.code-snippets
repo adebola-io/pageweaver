@@ -15,14 +15,14 @@
   // 	],
   // 	"description": "Log output to console"
   // }
-  "Import pages.config.json": {
+  "Import projects.config.json": {
     "scope": "javascript, typescript",
     "prefix": "imptpages",
     "body": [
-      "var ALL_PAGES = fs.existsSync(\"pages.config.json\") ? eval(fs.readFileSync(`pages.config.json`).toString()) : [];",
+      "var ALL_PAGES = fs.existsSync(\"projects.config.json\") ? eval(fs.readFileSync(`projects.config.json`).toString()) : [];",
       "$1"
     ],
-    "description": "Imports pages.config.json file if it exists, as a variable named ALL_PAGES."
+    "description": "Imports projects.config.json file if it exists, as a variable named ALL_PAGES."
   },
   "Return new promise": {
     "scope": "javascript, typescript",

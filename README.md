@@ -110,7 +110,7 @@ pageweaver build-app app-name
 The above command will generate a new react app, similar to what happens when you run create-react-app with npx.
 Learn more about the different creation arguments [here](http://pageweaver).</p>
 
-# Arguments and general info about a new web page or web app are stored in the pages.config.json file, which is located in the root directory of your project.
+# Arguments and general info about a new web page or web app are stored in the projects.config.json file, which is located in the root directory of your project.
 
 Pageweaver will simply run the corresponding build command for the framework.
 
