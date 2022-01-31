@@ -14,9 +14,10 @@
     "test": "node lib/test.js",
     "create-app": "node bin/pageweaver create-app",
     "delete-app": "node bin/pageweaver delete-app",
+    "build-app": "node bin/pageweaver build-app",
+    "serve-app": "node bin/pageweaver serve-app",
     "nuke-folder": "node bin/pageweaver nuke-folder",
-    "condense-css": "node bin/pageweaver condense-css",
-    "build": "node lib/bin/build.js"
+    "condense-css": "node bin/pageweaver condense-css"
   },
   "repository": {
     "type": "git",
