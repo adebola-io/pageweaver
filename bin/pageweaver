@@ -15,6 +15,10 @@ const resolveappName = require("../lib/scripts/resolveappName");
 const terminal = require("../lib/utils/terminal");
 const installDependencies = require("../lib/scripts/create-app/installDependencies");
 const overwritePage = require("../lib/scripts/overwritePage");
+const buildPage = require("../lib/scripts/build-app");
+const {
+  resolveBuildArgs,
+} = require("../lib/scripts/build-app/resolveBuildArgs");
 
 var appName = resolveappName(process.argv[3]);
 switch (process.argv[2]) {
@@ -70,7 +74,7 @@ switch (process.argv[2]) {
     });
     break;
   case "delete-app":
-    resolveDeleteArgs(process.argv[2]).then((args) => {
+    resolveDeleteArgs().then((args) => {
       deleteWebApp(appName, args.sourceFolder).then((stat) => {
         switch (stat) {
           case "success":
@@ -90,6 +94,11 @@ switch (process.argv[2]) {
             );
         }
       });
+    });
+    break;
+  case "build-app":
+    resolveBuildArgs().then((args) => {
+      buildPage(appName, args.sourceFolder);
     });
     break;
   case "nuke-folder":
