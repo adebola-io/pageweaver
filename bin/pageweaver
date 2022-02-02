@@ -32,7 +32,7 @@ switch (process.argv[2]) {
         switch (stat) {
           case "success":
             updatePageCount(process.argv[3], "append", args);
-            console.log(`${appName} was created succesfully.`.green);
+            terminal.success(`${appName} was created successfully.`);
             linespace();
             if (args.includes_npm) {
               setTimeout(() => {
