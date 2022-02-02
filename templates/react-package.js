@@ -12,17 +12,37 @@ module.exports = `\`{
     "@types/node": "^16.11.19",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
-    "typescript": "^4.5.5",\`
+    "typescript": "^\${
+      args.typescript_version
+        ? args.typescript_version
+        : modulesConfig.currentVersions.typescript
+    }",\`
         : ""
     }
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",\${
+    "react": "^\${
+      args.react_cli_version
+        ? args.react_cli_version
+        : modulesConfig.currentVersions.react_cli
+    }",
+    "react-dom": "^\${
+      args.react_cli_version
+        ? args.react_cli_version
+        : modulesConfig.currentVersions.react_cli
+    }",\${
       args.react_router ? \`
-    "react-router-dom" : "^5.2.0",\` : \`\`
+    "react-router-dom" : "^\${
+      args.react_router_version
+        ? args.react_router_version
+        : modulesConfig.currentVersions.react_router
+    }",\` : \`\`
     }\${
       args.scss
         ? \`
-    "sass": "^1.43.3",\`
+    "sass": "^\${
+      args.scss_version
+        ? args.scss_version
+        : modulesConfig.currentVersions.scss
+    }",\`
         : \`\`
     }
     "react-scripts": "4.0.3",

@@ -20,14 +20,22 @@ module.exports = `\`{
   "dependencies": {\${
     args.scss
       ? \`
-    "sass": "^1.43.3"\`
+    "sass": "^\${
+      args.scss_version
+        ? args.scss_version
+        : modulesConfig.currentVersions.scss
+    }"\`
       : \`\`
   }
   },
   "devDependencies": {\${
     args.typescript
       ? \`
-    "typescript": "^4.5.5"\`
+    "typescript": "^\${
+      args.typescript_version
+        ? args.typescript_version
+        : modulesConfig.currentVersions.typescript
+    }"\`
       : \`\`
   }
   }
