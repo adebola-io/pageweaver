@@ -19,6 +19,12 @@ module.exports = `\`{
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.2"
   },
+  "devDependencies": {\${
+    args.typescript
+      ? \`
+    "typescript": "^4.5.5"\`
+      : \`\`
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

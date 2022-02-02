@@ -2,6 +2,7 @@
 */node_bundles
 /node_modules
 */node_modules
+lib/scripts/create-app/dump.js
 projects.config.json
 hdlogo.png
 .npmignore

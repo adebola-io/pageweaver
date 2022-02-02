@@ -5,6 +5,6 @@ module.exports = `\`/*
   }\${mainParam}.res.base.css file is the compiled import of all responsive css files. 
 */
 \${args.scss ? "@use" : "@import"} '\${
-      args.framework ? \`res/\${args.scss ? "_" : ""}\` : \`\${mainParam}.res/\${args.scss ? "_" : "-"}\${mainParam}.\`
+      args.jsFramework ? \`res/\${args.scss ? "_" : ""}\` : \`\${mainParam}.res/\${args.scss ? "_" : "-"}\${mainParam}.\`
     }res.base\${args.scss ? "" : ".css"}';
 \``;

@@ -22,7 +22,7 @@ module.exports = `\`{
   "devDependencies": {\${
     args.typescript
       ? \`
-    "typescript": "^4.3.5"\`
+    "typescript": "^4.5.5"\`
       : \`\`
   }
   }

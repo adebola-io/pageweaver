@@ -4,7 +4,7 @@ module.exports = `\`<!DOCTYPE html>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />\${
-      args.no_css || args.framework
+      args.no_css || args.jsFramework
         ? ""
         : \`
     <link rel="stylesheet" href="./\${mainParam}.styles/\${
@@ -40,7 +40,7 @@ module.exports = `\`<!DOCTYPE html>
   </head>
   <body>
     \${
-      args.framework
+      args.jsFramework
         ? \`
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="\${args.react_cli ? "root" : args.vue_cli ? "app" : ""}"></div>\${
@@ -63,7 +63,7 @@ module.exports = `\`<!DOCTYPE html>
     </div>\`
     }
     \${
-      args.no_javascript || args.framework
+      args.no_javascript || args.jsFramework
         ? ""
         : \`\${
             args.bootstrap && !args.bootstrap_local

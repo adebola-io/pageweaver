@@ -1,4 +1,4 @@
-`\`// Vue router for \${mainParam} app.
+module.exports = `\`// Vue router for \${mainParam} app.
 import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [

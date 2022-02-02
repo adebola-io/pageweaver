@@ -1,6 +1,6 @@
 module.exports = `\`/* This should be your go-to file for styling all elements on the \${mainParam} page.*/
 \${
-  !args.framework
+  !args.jsFramework
     ? \`body {
   margin: 0;
   font-family: "Segoe-UI", Calibri, Arial, sans-serif;
