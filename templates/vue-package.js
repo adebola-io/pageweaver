@@ -18,13 +18,25 @@ module.exports = `\`{
     \${
       args.scss
         ? \`
-    "sass": "^1.43.3",\`
+    "sass": "^\${
+      args.scss_version
+        ? args.scss_version
+        : modulesConfig.currentVersions.scss
+    }",\`
         : \`\`
     }
-    "vue": "^3.0.0"\${
+    "vue": "^\${
+      args.vue_cli_version
+        ? args.vue_cli_version
+        : modulesConfig.currentVersions.vue_cli
+    }"\${
       args.vue_router
         ? \`,
-    "vue-router": "^4.0.12"\`
+    "vue-router": "^\${
+      args.vue_router_version
+        ? args.vue_router_version
+        : modulesConfig.currentVersions.vue_router
+    }"\`
         : \`\`
     }
   },
@@ -35,7 +47,11 @@ module.exports = `\`{
     "@vue/compiler-sfc": "^3.0.0",\${
       args.typescript
         ? \`
-    "typescript": "^4.5.5",\`
+    "typescript": "^\${
+      args.typescript_version
+        ? args.typescript_version
+        : modulesConfig.currentVersions.typescript
+    }",\`
         : \`\`
     }
     "babel-eslint": "^10.1.0",
