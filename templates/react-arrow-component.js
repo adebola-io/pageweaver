@@ -1,6 +1,6 @@
 module.exports = `\`import React from "react";
 \${args.react_router ? \`import {BrowserRouter as Router} from "react-router-dom";\`:\`\`}
-import "./styles/--\${mainParam}.css";
+import "./styles/\${mainParam}.css";
 
 const \${mainParam.charAt(0).toUpperCase()+mainParam.slice(1)} = () => {
   return (\${args.react_router ? \`
