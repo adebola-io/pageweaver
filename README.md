@@ -2,7 +2,7 @@
  <img src='logo.png' height='100px'></img>
 </p>
 
- <h1 align='center'>Pageweaver</h1>
+ <h1 align='center'><img src='pageweaver-head.png' height='45px'></img></h1>
 
  <p align='center' style='font-size: 10pt'> Current Version: 0.0.3 </p> 
   
@@ -10,12 +10,15 @@
 
 ## Contents
 
-- [Installation](#Installation)
-- [Usage](#Usage)
-  - [Creation](#Creation)
-  - [Development](#Development)
-  - [Production](#Production)
-  - [Deletion](#Deletion)
+- [Contents](#contents)
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Creation](#creation)
+      - [Creation Arguments](#creation-arguments)
+  - [Development](#development)
+  - [Production](#production)
+  - [Deletion](#deletion)
+  - [Complete Deletion](#complete-deletion)
 
 ---
 
