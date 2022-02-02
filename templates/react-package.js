@@ -5,7 +5,16 @@ module.exports = `\`{
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
+    "@testing-library/user-event": "^12.8.3",\${
+      args.typescript
+        ? \`
+    "@types/jest": "^27.4.0",
+    "@types/node": "^16.11.19",
+    "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.11",
+    "typescript": "^4.5.5",\`
+        : ""
+    }
     "react": "^17.0.2",
     "react-dom": "^17.0.2",\${
       args.react_router ? \`
@@ -18,12 +27,6 @@ module.exports = `\`{
     }
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.2"
-  },
-  "devDependencies": {\${
-    args.typescript
-      ? \`
-    "typescript": "^4.5.5"\`
-      : \`\`
   },
   "scripts": {
     "start": "react-scripts start",
