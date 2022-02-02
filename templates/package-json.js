@@ -7,6 +7,11 @@ module.exports = `\`{
       ? \`
     "watch-sass": "sass --watch ./\${mainParam}.styles/scss/\${mainParam}.app.scss:./\${mainParam}.styles/\${mainParam}.css",\`
       : \`\`
+  }\${
+    args.typescript
+      ? \`
+    "watch-ts": "tsc --watch",\`
+      : \`\`
   }
     "test": "echo 'Error: no test specified' && exit 1"
   },
