@@ -9,4 +9,5 @@ module.exports = `\`\${
 /* By default, all main styling content should be kept in the .content.css stylesheet.*/
 @import './\${mainParam}.content.css';\`
 }
+
 \``;
