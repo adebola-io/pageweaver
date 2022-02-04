@@ -39,7 +39,6 @@ switch (process.argv[2]) {
           case "success":
             updatePageCount(process.argv[3], "append", args);
             terminal.success(`${appName} was created successfully.`);
-            linespace();
             if (args.includes_npm) {
               setTimeout(() => {
                 installDependencies(
@@ -121,7 +120,7 @@ switch (process.argv[2]) {
             console.clear();
             terminal.success(
               "Pageweaver Development Server Started.",
-              `Your '${appName}' app is running on http://localhost:${port}`
+              `Your '${appName}' app is running on http://localhost:${port}.`
             );
             console.log("Hit CTRL + C to stop the server.".brightBlue);
             break;
