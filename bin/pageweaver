@@ -16,9 +16,15 @@ const terminal = require("../lib/utils/terminal");
 const installDependencies = require("../lib/scripts/create-app/installDependencies");
 const overwritePage = require("../lib/scripts/overwritePage");
 const buildPage = require("../lib/scripts/build-app");
+const colors = require("colors");
 const {
   resolveBuildArgs,
 } = require("../lib/scripts/build-app/resolveBuildArgs");
+const { serveApp } = require("../lib/scripts/serve-app");
+const {
+  resolveServeArgs,
+} = require("../lib/scripts/serve-app/resolveServeArgs");
+const { setUpDevServer } = require("../lib/scripts/serve-app/setUpDevServer");
 
 var appName = resolveappName(process.argv[3]);
 switch (process.argv[2]) {
@@ -42,6 +48,12 @@ switch (process.argv[2]) {
                   `${args.diffDir ? args.appDestination : "."}`
                 );
               }, 500);
+            } else {
+              setUpDevServer(
+                appName,
+                args,
+                `${args.diffDir ? args.appDestination : "."}`
+              );
             }
             break;
           case "already-exists":
@@ -99,6 +111,22 @@ switch (process.argv[2]) {
   case "build-app":
     resolveBuildArgs().then((args) => {
       buildPage(appName, args.sourceFolder);
+    });
+    break;
+  case "serve-app":
+    resolveServeArgs().then((args) => {
+      serveApp(appName, args.sourceFolder).then(({ stat, port }) => {
+        switch (stat) {
+          case "success":
+            console.clear();
+            terminal.success(
+              "Pageweaver Development Server Started.",
+              `Your '${appName}' app is running on http://localhost:${port}`
+            );
+            console.log("Hit CTRL + C to stop the server.".brightBlue);
+            break;
+        }
+      });
     });
     break;
   case "nuke-folder":

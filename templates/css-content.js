@@ -9,7 +9,7 @@ module.exports = `\`/* This should be your go-to file for styling all elements o
 html, body {
   height: 100%;
 }
-body div {
+.fill {
   position: fixed;
   display: flex;
   justify-content: center;
@@ -17,9 +17,11 @@ body div {
   height: 100%;
   width: 100%;
 }
-body div p {
-  font-size: 16pt;
-  color: #beb6c5;
+.center-text {
+  font-weight: bold;
+  font-size: 18pt;
+  color: #88ec59;
+  \${args.animations ? "animation: animation_1 500ms;" : ""}
 }\`
     : \`\`
 }\``;

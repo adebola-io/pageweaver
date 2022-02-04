@@ -5,9 +5,9 @@
   "description": "A command line application for creating web apps and sites.",
   "main": "bin/pageweaver",
   "dependencies": {
-    "adm-zip": "^0.5.9",
     "child_process": "^1.0.2",
-    "colors": "^1.4.0"
+    "colors": "^1.4.0",
+    "websocket": "^1.0.34"
   },
   "devDependencies": {},
   "scripts": {
